@@ -62,7 +62,7 @@ Every module features two embedded sovereign action triggers:
 git clone [https://github.com/awsanadelabdulbariahmedsultan-art/awsan-nexus-os-sovereign-platform-global-enterprise-logistics-capital-trade.git](https://github.com/awsanadelabdulbariahmedsultan-art/awsan-nexus-os-sovereign-platform-global-enterprise-logistics-capital-trade.git)
 
 
-
+```
 
 ---
 
