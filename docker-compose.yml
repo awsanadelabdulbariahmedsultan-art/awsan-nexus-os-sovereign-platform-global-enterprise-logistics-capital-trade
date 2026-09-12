@@ -1,0 +1,54 @@
+version: "3.8"
+services:
+  nexus-core:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: awsan_nexus_core
+    restart: unless-stopped
+    ports:
+      - "8000:8000"
+    environment:
+      - SOVEREIGN_OWNER=Eng. Awsan Adel Abdulbari Ahmed Sultan
+      - NATIONAL_ID=01010305468
+      - AI_ENGINE=Quinn-3.8-OpenWeights
+      - HARDWARE_ACCELERATION=Xreme-Series-Ready
+      - APP_ENV=production
+    networks:
+      - nexus-net
+
+  nexus-n8n:
+    image: docker.n8n.io/n8nio/n8n:latest
+    container_name: awsan_nexus_n8n
+    restart: unless-stopped
+    ports:
+      - "5678:5678"
+    environment:
+      - N8N_BASIC_AUTH_ACTIVE=true
+      - N8N_BASIC_AUTH_USER=admin
+      - N8N_BASIC_AUTH_PASSWORD=NexusSovereign2026!
+      - WEBHOOK_URL=http://localhost:5678/
+    volumes:
+      - n8n_data:/home/node/.n8n
+    networks:
+      - nexus-net
+
+  nexus-gateway:
+    image: nginx:alpine
+    container_name: awsan_nexus_gateway
+    restart: unless-stopped
+    ports:
+      - "80:80"
+    volumes:
+      - ./frontend:/usr/share/nginx/html:ro
+    depends_on:
+      - nexus-core
+    networks:
+      - nexus-net
+
+networks:
+  nexus-net:
+    driver: bridge
+
+volumes:
+  n8n_data:
