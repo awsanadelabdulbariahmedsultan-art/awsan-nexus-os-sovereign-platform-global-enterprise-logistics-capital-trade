@@ -10,7 +10,6 @@ from backend.modules.ports_logistics import GlobalPortsEngine
 from backend.modules.capital_markets_web3 import CapitalMarketsEngine
 from backend.modules.edge_hardware_fleet import EdgeHardwareFleetEngine
 
-# استيراد محرك الألعاب وNVIDIA مع حماية
 try:
     from backend.modules.gaming_nvidia_engine import GamingNvidiaEngine
     gaming = GamingNvidiaEngine()
@@ -37,7 +36,7 @@ ports = GlobalPortsEngine()
 markets = CapitalMarketsEngine()
 hardware_fleet = EdgeHardwareFleetEngine()
 
-# كود الواجهة الرسومية الملونة المدمجة بالكامل لضمان فتحها فوراً
+# كود الواجهة الرسومية الملونة المدمج بالكامل لضمان عرضه 100%
 DASHBOARD_HTML = """<!DOCTYPE html>
 <html lang="ar" dir="rtl">
 <head>
@@ -65,8 +64,8 @@ DASHBOARD_HTML = """<!DOCTYPE html>
         
         <div class="flex items-center space-x-2 space-x-reverse flex-wrap gap-2">
             <!-- زر التثبيت PWA المباشر على الهاتف والكمبيوتر -->
-            <button id="pwaInstallBtn" class="hidden px-4 py-2 bg-gradient-to-r from-blue-600 to-indigo-600 hover:from-blue-500 hover:to-indigo-500 text-white rounded-lg text-xs font-bold shadow-lg transition flex items-center animate-pulse">
-                <i class="fa-solid fa-download ml-2"></i> 📲 تثبيت التطبيق الآن (Install App)
+            <button id="pwaInstallBtn" onclick="installAppDirectly()" class="px-4 py-2 bg-gradient-to-r from-blue-600 to-indigo-600 hover:from-blue-500 hover:to-indigo-500 text-white rounded-lg text-xs font-bold shadow-lg transition flex items-center animate-pulse">
+                <i class="fa-solid fa-download ml-2"></i> 📲 تثبيت التطبيق على جهازك (Install App)
             </button>
             <span class="px-3 py-1 bg-green-950 border border-green-700 text-green-400 text-xs rounded-full">
                 <i class="fa-brands fa-nvidia ml-1"></i> NVIDIA Omniverse + ACE
@@ -139,9 +138,9 @@ DASHBOARD_HTML = """<!DOCTYPE html>
             <span class="text-emerald-400 font-bold">ONLINE (Quinn-3.8 Engine)</span>
         </div>
         <div class="space-x-4 space-x-reverse">
-            <a href="/api/overview" class="hover:text-blue-400 underline">عرض المؤشرات الحية (/api/overview)</a>
-            <a href="/api/system" class="hover:text-blue-400 underline">بيانات السيادة البرمجية (/api/system)</a>
-            <a href="/docs" class="hover:text-blue-400 underline">بوابة الـ API التفاعلية (/docs)</a>
+            <a href="/api/overview" class="hover:text-blue-400 underline">المؤشرات الحية (/api/overview)</a>
+            <a href="/api/system" class="hover:text-blue-400 underline">بيانات السيادة (/api/system)</a>
+            <a href="/docs" class="hover:text-blue-400 underline">بوابة الـ API (/docs)</a>
         </div>
     </div>
 
@@ -151,24 +150,19 @@ DASHBOARD_HTML = """<!DOCTYPE html>
         }
 
         let deferredPrompt;
-        const installBtn = document.getElementById('pwaInstallBtn');
-
         window.addEventListener('beforeinstallprompt', (e) => {
             e.preventDefault();
             deferredPrompt = e;
-            installBtn.classList.remove('hidden');
         });
 
-        installBtn.addEventListener('click', async () => {
+        function installAppDirectly() {
             if (deferredPrompt) {
                 deferredPrompt.prompt();
-                const { outcome } = await deferredPrompt.userChoice;
-                if (outcome === 'accepted') {
-                    installBtn.classList.add('hidden');
-                }
                 deferredPrompt = null;
+            } else {
+                alert("لتثبيت التطبيق على هاتفك: اضغط على خيارات المتصفح (⋮) في أعلى الشاشة واختر 'تثبيت التطبيق' أو 'إضافة إلى الشاشة الرئيسية'.");
             }
-        });
+        }
 
         window.addEventListener("gamepadconnected", (e) => {
             document.getElementById("controller-status").innerHTML = "🎮 متصل: " + e.gamepad.id.substring(0, 18);
@@ -178,7 +172,7 @@ DASHBOARD_HTML = """<!DOCTYPE html>
 </html>
 """
 
-# 1. الرابط الرئيسي يعرض الواجهة الرسومية الملونة فوراً دون أي اعتمادية على ملفات خارجية
+# 1. الرابط الرئيسي يعرض الواجهة الرسومية الملونة فوراً دون أي اعتمادية
 @app.get("/", response_class=HTMLResponse)
 def get_dashboard():
     return HTMLResponse(content=DASHBOARD_HTML)
@@ -212,7 +206,7 @@ def get_sw():
     """
     return Response(content=sw_content, media_type="application/javascript")
 
-# 4. مسار بيانات السيادة (JSON)
+# 4. مسار بيانات السيادة وحالة النظام (JSON)
 @app.get("/api/system")
 def get_system_status():
     return {
@@ -223,7 +217,7 @@ def get_system_status():
         "status": "ONLINE"
     }
 
-# 5. مسار المؤشرات الشاملة (الموانئ، المالية، التعدين، الأساطيل، والألعاب)
+# 5. مسار المؤشرات الشاملة
 @app.get("/api/overview")
 def overview():
     stats = fin.get_stats()
