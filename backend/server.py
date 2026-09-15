@@ -1,5 +1,8 @@
-from fastapi import FastAPI
+from fastapi import FastAPI, HTTPException
 from fastapi.responses import FileResponse
+from fastapi.middleware.cors import CORSMiddleware
+from pydantic import BaseModel
+from typing import Dict, Any, Optional
 import os
 
 from backend.core.financial_engine import FinancialEngine
@@ -8,7 +11,7 @@ from backend.modules.ports_logistics import GlobalPortsEngine
 from backend.modules.capital_markets_web3 import CapitalMarketsEngine
 from backend.modules.edge_hardware_fleet import EdgeHardwareFleetEngine
 
-# استيراد محرك الألعاب وNVIDIA مع حماية من الأخطاء
+# استيراد محرك الألعاب وتقنيات NVIDIA مع حماية من الأخطاء
 try:
     from backend.modules.gaming_nvidia_engine import GamingNvidiaEngine
     gaming = GamingNvidiaEngine()
@@ -21,20 +24,38 @@ app = FastAPI(
     version="2.5.0"
 )
 
+# تفعيل CORS لتمكين عمل التطبيق والواجهة من أي متصفح أو هاتف أو كونسول
+app.add_middleware(
+    CORSMiddleware,
+    allow_origins=["*"],
+    allow_credentials=True,
+    allow_methods=["*"],
+    allow_headers=["*"],
+)
+
 fin = FinancialEngine()
 ai = SovereignAIAgent()
 ports = GlobalPortsEngine()
 markets = CapitalMarketsEngine()
 hardware_fleet = EdgeHardwareFleetEngine()
 
-# 1. الرابط الرئيسي (يفتح واجهة dashboard.html التفاعلية وزر التثبيت)
+# نماذج طلبات أوامر الوكيل والتوسعات
+class CopilotRequest(BaseModel):
+    module: str
+    prompt: str
+
+class ExtensionRequest(BaseModel):
+    module: str
+    extension_name: str
+    config: Optional[Dict[str, Any]] = None
+
+# 1. الرابط الرئيسي (يفتح الداشبورد الملون التفاعلي وزر التثبيت)
 @app.get("/")
 def get_dashboard():
     if os.path.exists("frontend/dashboard.html"):
         return FileResponse("frontend/dashboard.html")
     elif os.path.exists("frontend/index.html"):
         return FileResponse("frontend/index.html")
-    # في حال عدم العثور على ملف الواجهة، يعرض حالة النظام البرمجية تلقائياً
     return {
         "system": "AWSAN NEXUS OS",
         "inventor": "Eng. Awsan Adel Sultan (01010305468)",
@@ -43,7 +64,7 @@ def get_dashboard():
         "status": "ONLINE"
     }
 
-# 2. ملفات التثبيت الفوري كـ App على الهاتف والكمبيوتر (PWA)
+# 2. ملفات التثبيت PWA لتنزيل التطبيق على الهاتف والكمبيوتر
 @app.get("/manifest.json")
 def get_manifest():
     return FileResponse("frontend/manifest.json", media_type="application/manifest+json")
@@ -72,8 +93,23 @@ def get_overview():
         "ai_intelligence": ai.audit_and_advise(stats),
         "ports_network": ports.get_ports(),
         "market_and_mining": markets.get_market_telemetry(),
-        "hardware_fleets": hardware_fleet.get_fleet_telemetry()
+        "edge_hardware_fleet": hardware_fleet.get_fleet_telemetry()
     }
     if gaming:
         data["gaming_and_nvidia"] = gaming.get_gaming_telemetry()
     return data
+
+# 5. مسار تنفيذ أوامر الوكيل الذكي للبناء والتنفيذ
+@app.post("/api/copilot/execute")
+def execute_copilot(req: CopilotRequest):
+    return ai.execute_builder(req.module, req.prompt)
+
+# 6. مسار تسجيل وتفعيل التوسعات الديناميكية
+@app.post("/api/extension/register")
+def register_dynamic_extension(req: ExtensionRequest):
+    return {
+        "status": "EXTENSION_ATTACHED",
+        "module": req.module,
+        "extension": req.extension_name,
+        "message": f"تمت إضافة التوسعة [{req.extension_name}] بنجاح إلى محور [{req.module}]."
+    }
