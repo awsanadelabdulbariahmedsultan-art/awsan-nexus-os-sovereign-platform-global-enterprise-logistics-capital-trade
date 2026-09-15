@@ -1,12 +1,13 @@
 # ===========================================================================================
-# AWSAN NEXUS OS (AN-OS) - Sovereign Production Container (BuildKit Optimized)
+# AWSAN NEXUS OS (AN-OS) - Sovereign Production Container
 # Author: Eng. Awsan Adel Abdulbari Ahmed Sultan (2026)
 # ===========================================================================================
 FROM python:3.11-slim AS builder
 
 WORKDIR /app
-COPY requirements.txt .
-RUN pip install --no-cache-dir --user -r requirements.txt
+# تم تحديث السطرين التاليين لقراءة requirements.nexus.txt
+COPY requirements.nexus.txt .
+RUN pip install --no-cache-dir --user -r requirements.nexus.txt
 
 FROM python:3.11-slim AS runner
 
