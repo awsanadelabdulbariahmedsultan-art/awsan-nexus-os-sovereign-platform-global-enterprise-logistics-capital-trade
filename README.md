@@ -66,6 +66,43 @@ git clone [https://github.com/awsanadelabdulbariahmedsultan-art/awsan-nexus-os-s
 
 ---
 
+# AWSAN NEXUS OS (AN-OS) 🌐⚙️
+### The Sovereign Autonomous Operating System for Global Enterprise, Trade Logistics, Capital Markets & Digital Mining
+**OFFICIAL INTELLECTUAL PROPERTY & IMPLEMENTATION RIGHTS RESERVED © 2026**
+
+---
+
+## 📌 Sovereign Intellectual Property & Ownership Details
+- **Lead Architect & Inventor:** Eng. Awsan Adel Abdulbari Ahmed Sultan
+- **Nationality & Origin:** Republic of Yemen
+- **National ID:** `01010305468`
+- **Official Contact Numbers:** +967 777852433 / +967 7776633003
+- **Official Emails:** `awsandew@outlook.com` | `awsan.sultan@gmail.com`
+- **AI Core Engine:** **Quinn-3.8 Open-Weights Model** for 100% private, sovereign on-premise execution with zero data leakage.
+- **Hardware & Autonomous Systems Layer:** **Xreme O3** mobile processors, **Xreme O** data accelerator (16x Bandwidth), and **XG 100** (3nm) chips for autonomous port and mining fleets.
+- **Gaming Ecosystem & NVIDIA:** **NVIDIA ACE** engine for intelligent digital humans/avatars, **NVIDIA Omniverse** for 3D digital twins, and native integration with **PlayStation 5** and **Xbox Series X/S** platforms.
+- **Legal Status:** Proprietary Sovereign Software © 2026. All Rights Reserved.
+
+---
+
+## 🌐 Live App Preview & Direct Investor Portal (Live App & Install)
+
+1. **One-Click Interactive Cloud Launch:**  
+   [![Open in GitHub Codespaces](https://github.com/codespaces/badge.svg)](https://codespaces.new/awsanadelabdulbariahmedsultan-art/awsan-nexus-os-sovereign-platform-global-enterprise-logistics-capital-trade)  
+   *(Enables instant access to the runtime environment and cloud APIs directly without installing any local software).*
+
+2. **Direct App Installation Options:**
+   - **Directly via Browser (PWA):** Open the link in your browser and click **`Install App`**.
+   - **Gaming Consoles:** Open the link via the PS5 or Xbox browser with full gamepad controller navigation.
+   - **App Stores:** Ready for packaging and export via PWABuilder for the Google Play Store and Windows Store.
+
+---
+**Official Inquiries & Investor Relations:**  
+`Eng. Awsan Adel Abdulbari Ahmed Sultan` — `awsandew@outlook.com` | `+967 777852433`
+
+
+---
+
 # نظام التشغيل أوسان نيكسوس | AWSAN NEXUS OS (AN-OS) 🌐⚙️
 ### نظام التشغيل السيادي المستقل لإدارة المؤسسات العالمية، التجارة واللوجستيات، والأسواق المالية، والتعدين الرقمي
 **حقوق الملكية الفكرية والتنفيذ الرسمية محفوظة © 2026**
@@ -133,3 +170,47 @@ cd awsan-nexus-os-sovereign-platform-global-enterprise-logistics-capital-trade
 
 
 cd awsan-nexus-os-sovereign-platform-global-enterprise-logistics-capital-trade
+
+
+
+
+```
+
+---
+
+# نظام التشغيل أوسان نيكسوس | AWSAN NEXUS OS (AN-OS) 🌐⚙️
+### نظام التشغيل السيادي المستقل لإدارة المؤسسات العالمية، التجارة واللوجستيات، والأسواق المالية، والتعدين الرقمي
+**حقوق الملكية الفكرية والتنفيذ الرسمية محفوظة © 2026**
+
+---
+
+## 📌 بيانات الملكية الفكرية والسيادية
+- **المبتكر والمهندس المعماري الرئيسي:** المهندس أوسان عادل عبدالباري أحمد سلطان (Eng. Awsan Adel Abdulbari Ahmed Sultan)
+- **الجنسية وبلد المنشأ:** الجمهورية اليمنية
+- **رقم الهوية الوطنية:** `01010305468`
+- **أرقام التواصل الرسمية:** 00967777852433 / 00967776633003
+- **البريد الإلكتروني الرسمي:** `awsandew@outlook.com` | `awsan.sultan@gmail.com`
+- **محرك الذكاء الاصطناعي:** **نموذج Quinn-3.8 مفتوح الأوزان** للتشغيل الداخلي والسيادي 100% بدون تسريب للبيانات.
+- **طبقة العتاد والأنظمة المستقلة:** معالجات **Xreme O3**، ومسرع البيانات **Xreme O** (16x Bandwidth)، ورقائق **XG 100** (3nm) لأساطيل الموانئ والمناجم ذاتية القيادة.
+- **منظومة الألعاب و NVIDIA:** محرك **NVIDIA ACE** للأفاتار الذكي، و **NVIDIA Omniverse** للتوائم الرقمية ثلاثية الأبعاد، وتكامل منصات **PlayStation 5** و **Xbox Series X/S**.
+- **الوضع القانوني:** برمجية سيادية خاصة ومملوكة بالكامل © 2026. جميع الحقوق محفوظة.
+
+---
+
+## 🌐 بوابة المعاينة والتحميل المباشر للمستثمرين (Live App & Install)
+
+1. **المعاينة السحابية التفاعلية بنقرة واحدة (One-Click Cloud Launch):**  
+   [![Open in GitHub Codespaces](https://github.com/codespaces/badge.svg)](https://codespaces.new/awsanadelabdulbariahmedsultan-art/awsan-nexus-os-sovereign-platform-global-enterprise-logistics-capital-trade)  
+   *(تتيح فتح واجهة التشغيل والـ APIs السحابية مباشرة دون الحاجة لتثبيت أي برامج).*
+
+2. **خيارات التثبيت المباشر كـ App:**
+   - **عبر المتصفح مباشرة (PWA):** افتح الرابط في متصفحك واضغط على زر **`تثبيت التطبيق | Install App`**.
+   - **أجهزة الكونسول:** فتح الرابط في متصفح PS5 أو Xbox مع التحكم الكامل بيد الألعاب.
+   - **المتاجر:** جاهز للتصدير عبر PWABuilder لـ Google Play Store و Windows Store.
+
+---
+**Official Inquiries & Investor Relations:**  
+`Eng. Awsan Adel Abdulbari Ahmed Sultan` — `awsandew@outlook.com` | `+967 777852433`
+
+
+
